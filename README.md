@@ -10,7 +10,7 @@ Extract http(s) links from MySQL's `.ibd` files
     
     * This will install **ibd-http-extractor** from *GitHub*
 
-To use, start each command using `ibd-http-extractor` 
+To use, start each command using `ibd` 
 
 ## Commands
 ### Positional
