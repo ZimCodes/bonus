@@ -31,4 +31,4 @@ The file path(s) of the .ibd file(s).
 ## License
 ibd-http-extractor is licensed under the *Unlicense*.
 
-See [MIT](https://github.com/ZimCodes/blob/main/LICENSE) for more details
+See [Unlicense](https://github.com/ZimCodes/bonus/blob/main/LICENSE) for more details
