@@ -2,5 +2,5 @@
   "https://www.sitepoint.com/mime-types-complete-list": "tr td[headers]:nth-child(n+2)",
   "https://www.iana.org/assignments/media-types/media-types.xhtml": "tr td:nth-child(2n) a",
   "https://www.digipres.org/formats/mime-types": "th a",
-  "extras": ["application/download","application/x-binary","application/binary"]
+  "extras": ["application/download","application/x-binary","application/binary","application/x-chm"]
 }
