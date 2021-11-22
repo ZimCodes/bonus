@@ -14,8 +14,12 @@ def get_resources() -> dict:
 def get_all_mimes(res_map) -> set:
     mimes = set()
     for url, css_select in res_map.items():
-        print(f"Retrieving MIME types from {url}.....")
-        mimes |= retrieve_mimes(url, css_select)
+        if url != "extras":
+            print(f"Retrieving MIME types from {url}.....")
+            mimes |= retrieve_mimes(url, css_select)
+        else:
+            print(f"Retrieving extra MIME types.......")
+            mimes |= set(css_select)
     return mimes
 
 
@@ -29,9 +33,11 @@ def retrieve_mimes(url, css_select) -> set:
 if __name__ == "__main__":
     """Grabs mime types from IANA database and friends"""
     all_mimes = get_all_mimes(get_resources())
+    total = len(all_mimes)
     print("Completed Retrieval!\n")
     print("Exporting data to './mime.json' file path")
     with open('./mimes.json', 'w') as f:
         json.dump(sorted(all_mimes), f)
 
+    print(f"+++| Total: {total} |+++")
     print("Export complete! Shutting down....")
