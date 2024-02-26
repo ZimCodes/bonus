@@ -6,6 +6,7 @@ This is a collection of tiny individual projects, libraries, and scripts, which 
 | ibd-http-extractor |   Rust   | Extract *http(s)* links from `.ibd` files      |
 | mime               |  Python  | Generate a JSON file containing all MIME types |
 | algorithms         | Various  | Helpful algorithms                             |
+| user-scripts       | JavaScript | Custom user-scripts for tampermonkey, greasemonkey, etc.|
 
 ## License
 All are licensed under the *Unlicense*.
