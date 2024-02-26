@@ -1,6 +1,7 @@
 // ==UserScript==
 // @name         F95 Random Bookmark Selector
 // @namespace    https://github.com/ZimCodes/bonus/tree/main/user-scripts
+// @copyright    Unlicense
 // @version      2024-02-25
 // @description  randomly picks a page & bookmark number from your f95 bookmark page. Just press the 'Random' button. 
 // @author       ZimCodes
