@@ -8,6 +8,7 @@
 // @author       ZimCodes
 // @match        https://f95zone.to/account/bookmarks*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=tampermonkey.net
+// @supportURL   https://github.com/ZimCodes/bonus
 // @grant        none
 // ==/UserScript==
 
