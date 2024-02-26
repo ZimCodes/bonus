@@ -3,32 +3,29 @@
 // @namespace    https://github.com/ZimCodes/bonus/tree/main/user-scripts
 // @copyright    © 2024 by ZimCodes
 // @license      Unlicense
-// @version      2024-02-25
-// @description  randomly picks a page & bookmark number from your f95 bookmark page. Just press the 'Random' button. 
+// @version      2024-02-26
+// @description  Randomly picks a bookmark from your f95 bookmark page. Just press the 'Random' button. 
 // @author       ZimCodes
 // @match        https://f95zone.to/account/bookmarks*
-// @icon         https://www.google.com/s2/favicons?sz=64&domain=tampermonkey.net
+// @icon         https://external-content.duckduckgo.com/ip3/f95zone.to.ico
 // @supportURL   https://github.com/ZimCodes/bonus
 // @grant        none
 // ==/UserScript==
-
-(() => {
+(async () => {
     'use strict';
-
-    var randBtn = document.createElement('button');
-    //Prepare button attributes
-    randBtn.setAttribute("name","random");
-    randBtn.setAttribute("type","button");
-	randBtn.id = "randbtn";
-	//F95zone style classes
-	randBtn.classList.add("pageNav-jump","pageNav-jump--next");
-	
-    //Prepare button text
-	var randTxt = document.createTextNode('Random');
-	randBtn.appendChild(randTxt);
+	const BOOKMARK_QUERY = 'bmpos';
+	//Apply custom styles in a style tag
+	function applyCSS(css) {
+		let styleEl = document.querySelector("style");
+		if (styleEl === null) {
+			styleEl = document.createElement('style');
+		}
+		styleEl.appendChild(document.createTextNode(css));
+		document.head.appendChild(styleEl);
+	}
 	
 	//button CSS styles
-	var btnCSS = (`
+	let stylesCSS = (`
 		#randbtn{
 			color:yellow;
 			border: 1px solid #343638;
@@ -41,32 +38,66 @@
 		#randbtn:active{
 			background-color: #ec5555;
 		}
+		#chosen{
+			color: yellow;
+			text-shadow: #cc0000 1px 0 8px;
+		}
 	`);
 	
-	//Apply button styles
-	function applyCSS(css) {
-	  const style = document.createElement('style');
-	  style.appendChild(document.createTextNode(css));
-	  document.head.appendChild(style);
+	
+	applyCSS(stylesCSS);
+	function getRandIntInc(min, max) {
+			//Inclusive random number generator
+			return Math.floor(Math.random() * (max - min + 1) ) + min;
+		} 
+	
+	function highlightBookmarkChoice(){
+		if(!location.search.includes(BOOKMARK_QUERY)) {
+			return;
+		}
+		let newURL = location.href.substring(0,
+		location.search.includes('&'+BOOKMARK_QUERY) !== -1 ? location.href.indexOf('&'+BOOKMARK_QUERY) : location.href.indexOf(BOOKMARK_QUERY));// removes '&bmpos'  or 'bmpos' from URL
+		history.replaceState({},"",newURL); //Change the URL to one w/o 'bmpos' query param
+		
+		let bookmarkListEl = document.querySelector("ol.listPlain"); 
+		
+		let randBookmarkPos = getRandIntInc(0,bookmarkListEl.children.length);// Pick a random bookmark position (usually 0-19, total 20)
+		let chosenBookmarkEl = bookmarkListEl.children[randBookmarkPos];
+		chosenBookmarkEl.id = "chosen";
+		chosenBookmarkEl.scrollIntoView(false); //scroll selected bookmark into view from the bottom of the page
 	}
-	applyCSS(btnCSS);
+	highlightBookmarkChoice();
+	
+    let randBtn = document.createElement('button');
+    //Prepare button attributes
+    randBtn.setAttribute("name","random");
+    randBtn.setAttribute("type","button");
+	randBtn.id = "randbtn";
+	//F95zone style classes
+	randBtn.classList.add("pageNav-jump","pageNav-jump--next");
+	
+    //Prepare button text
+	let randTxt = document.createTextNode('Random');
+	randBtn.appendChild(randTxt);
+	
 	
 	//Add button to F95
 	document.querySelector("nav > div.pageNav").appendChild(randBtn);
 	
 	function pickRandomBookmark(){
-		var pagination = document.querySelector("ul.pageNav-main");//Select pagination
-		var lastPageNum = pagination.children[pagination.children.length-1].children[0].textContent;//Get the last page number of the pagination
+		let pagination = document.querySelector("ul.pageNav-main");//Select pagination
+		let lastPageNum = pagination.children[pagination.children.length-1].children[0].textContent;//Get the last page number of the pagination
+		let randPageChoiceNum = getRandIntInc(1,Number(lastPageNum));//Pick a random page number
+		let curURL = new URL(location.href);//Get the current URL
+		curURL.searchParams.set("page",randPageChoiceNum);//Customize URL to point to the randomly chosen page number
 		
+		//Customize URL to add bookmark query parameter
+		curURL.searchParams.set("bmpos",1);
 		
-		function getRandIntInc(min, max) {
-			//Inclusive random number generator
-			return Math.floor(Math.random() * (max - min + 1) ) + min;
-		} 
-		
-		var randPageChoiceNum = getRandIntInc(1,Number(lastPageNum));//Pick a random page number
-		var randBookmarkChoiceNum = getRandIntInc(1,20);// Pick a random bookmark position (there can only be a max of 20 bookmarks per pages)
-		alert(`Page #${randPageChoiceNum} \nBookmark #${randBookmarkChoiceNum}`); //Show an alert 
+		//Go To randomly chosen bookmark page
+		location.replace(curURL.toString());
 	}
 	randBtn.addEventListener("click", pickRandomBookmark);
-})();
+})().catch(err => {
+	console.error(err);
+});

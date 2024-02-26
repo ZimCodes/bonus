@@ -2,12 +2,13 @@
 
 ## Description
 
-Randomly picks a page & bookmark number from your bookmark page. Just press the 'Random' button.
+Randomly picks a bookmark from your f95 bookmark page. **Just press the Random button.**
+ 
 
-## How to Use
-1. Go to your bookmark page on f95
-2. Scroll to the bottom of your bookmarks until you see a button called **Random**. _Its located in the same row of your bookmark page numbers_
-3. Click **Random** and an alert will appear showing you a random page number and random bookmark position.
+## How To Use
+1. Go to your bookmark page on f95. `f95zonedotto/account/bookmarks`
+2. Scroll to the bottom of your bookmarks until you see a button called **Random**. _Its located in the same row as your bookmark page numbers_
+3. Click **Random** and you will be taken to a randomly selected bookmark which is highlighted in red & yellow shadows
 4. That's it!
 
 ## License
