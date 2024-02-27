@@ -8,7 +8,7 @@ This script also works with other sites containing a bookmark page similar to f9
  
 
 ## How To Use
-1. Go to your bookmark page on f95. `f95zonedotto/account/bookmarks`
+1. Go to your bookmark page on f95. `f95zone(dot)to/account/bookmarks`
 2. Scroll to the bottom of your bookmarks until you see a button called **Random**. _Its located in the same row as your bookmark page numbers_
 3. Click **Random** and you will be taken to a randomly selected bookmark which is highlighted in red & yellow shadows
 4. That's it!
