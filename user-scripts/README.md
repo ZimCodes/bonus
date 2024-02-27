@@ -1,8 +1,10 @@
-# F95 Random Bookmark Selector
+# F95 Random Bookmark Picker
 
 ## Description
 
-Randomly picks a bookmark from your f95 bookmark page. **Just press the Random button.**
+Randomly picks a bookmark from your f95-like bookmark page. **Just press the Random button.**
+
+This script also works with other sites containing a bookmark page similar to f95! Just add another `@match` meta that points to the bookmark URL of the site.
  
 
 ## How To Use
