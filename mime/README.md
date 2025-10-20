@@ -7,6 +7,6 @@ This command outputs a file called `mimes.json` containing all available MIME ty
 `python mime.py`
 
 ## License
-**mime** is licensed under the *Unlicense*.
+**mime** is licensed under the *MIT*.
 
-See [Unlicense](https://github.com/ZimCodes/bonus/blob/main/LICENSE) for more details
+See [MIT](https://github.com/ZimCodes/bonus/blob/main/LICENSE) for more details
