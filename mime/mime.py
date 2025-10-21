@@ -5,11 +5,33 @@ import json
 from bs4 import BeautifulSoup
 
 def get_resources() -> dict[str,str]:
+    """Retrieve resources for obtaining mimetypes
+
+    Gets instructions from a file called 'res.json' which shows how to extract mimetypes
+    from a website. It also contains extra custom-made mimetypes not commonly used.
+
+    Returns:
+         a dict containing urls and extra mimetype not found in the urls.
+
+    Raises:
+        IOError: An error occurred when trying to access res.json
+    """
     with open('res.json', 'r') as f1:
         res_map = json.load(f1)
         return res_map
 
 def get_all_mimes(res_map: dict[str, str]) -> set[str]:
+    """Retrieve all mimetypes from various locations
+
+    Gets all mimetype found on various websites specified by 'res.json' and also include the custom-made
+    mimetypes found in this found as well.
+
+    Args:
+        res_map: a dict of instructions and custom-made mimetypes to retrieve mimes from
+
+    Returns:
+        A set containing all unique mimetypes from various locations
+    """
     mimes = set()
     for url, css_select in res_map.items():
         if url != "extras":
@@ -22,8 +44,20 @@ def get_all_mimes(res_map: dict[str, str]) -> set[str]:
 
 
 def retrieve_mimes(url: str, css_select: str) -> set[str]:
+    """Get all mimes from a website.
+
+    Retrieve all mimetypes found in a website.
+
+    Args:
+        url: Website URL to extract mimetypes from
+        css_select: The CSS selector that contains the mimetype information
+
+    Return:
+        A set of unique mimetypes extracted from a website
+    """
     headers = {
-        "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36",
+        "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 "
+                      "Safari/537.36",
         "Accept": "text/html, application/xhtml+xml;q=0.8",
         "Accept-Language": "en, *;q=0.6"
     }
