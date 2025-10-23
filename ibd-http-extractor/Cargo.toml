@@ -1,16 +1,16 @@
 [package]
 name = "ibd-http-extractor"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["ZimCodes <23222943+ZimCodes@users.noreply.github.com>"]
 edition = "2018"
 description = "Extract http(s) links from MySQL .ibd files"
 keywords =["extractor","mysql","file"]
 categories = ["command-line-utilities","filesystem"]
 publish = false
-repository = "https://github.com/ZimCodes/ibd-http-extractor"
+repository = "https://github.com/ZimCodes/bonus/"
 license = "MIT"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-regex = "~1"
-structopt = "0.*"
+regex = "1"
+clap = {version = "~4.5", features = ['derive']}
