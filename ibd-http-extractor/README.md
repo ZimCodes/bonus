@@ -26,7 +26,6 @@ The file path(s) of the .ibd file(s).
 |-----------------|----------------------------|
 | `-h, --help`    | Prints help information    |
 | `-V, --version` | Prints version information |
-| `-i, --input`   | .ibd directory path        |
 | `-o`            | Save location              |
 
 ## License
