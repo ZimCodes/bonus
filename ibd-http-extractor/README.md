@@ -7,11 +7,14 @@ Extract http(s) links from MySQL's `.ibd` files
     * If Rust is not installed, please follow [Rust's installation instructions](https://rust-lang.org/tools/install)
    
 2. Open a CLI & type 
-`cargo install --branch main --git https://github.com/ZimCodes/bonus/ibd-http-extractor`
+`cargo install --branch main --git https://github.com/ZimCodes/bonus ibd-http-extractor`
     
     * This will install **ibd-http-extractor** from *GitHub*
 
 To use, start each command using `ibd` 
+
+### To Uninstall
+`cargo uninstall ibd-http-extractor`
 
 ## Commands
 ### Positional
