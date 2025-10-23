@@ -2,7 +2,7 @@
 name = "ibd-http-extractor"
 version = "0.2.0"
 authors = ["ZimCodes <23222943+ZimCodes@users.noreply.github.com>"]
-edition = "2018"
+edition = "2024"
 description = "Extract http(s) links from MySQL .ibd files"
 keywords =["extractor","mysql","file"]
 categories = ["command-line-utilities","filesystem"]
